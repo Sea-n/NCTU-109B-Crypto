@@ -1,0 +1,13 @@
+diff --git a/GNUmakefile b/GNUmakefile
+index 11e1ae48..a54da7f6 100644
+--- a/GNUmakefile
++++ b/GNUmakefile
+@@ -836,7 +836,7 @@ endif  # IBM XL C++ compiler
+ # question is, which choice is easier on users?
+ ifneq ($(IS_DARWIN),0)
+   CXX ?= c++
+-  # CRYPTOPP_CXXFLAGS += -stdlib=libc++
++  CRYPTOPP_CXXFLAGS += -stdlib=libc++
+   ifeq ($(findstring -fno-common,$(CXXFLAGS)),)
+     CRYPTOPP_CXXFLAGS += -fno-common
+   endif
