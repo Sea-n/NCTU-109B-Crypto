@@ -55,10 +55,10 @@ int main() {
 	/* Write answer to file */
 	FILE *fd = fopen("out.txt", "w");
 
-	for (const byte c : cfbCip) fprintf(fd, "%02x ", c & 0xFF); fputs("\n", fd);
-	for (const byte c : cb0Cip) fprintf(fd, "%02x ", c & 0xFF); fputs("\n", fd);
-	for (const byte c : cb9Cip) fprintf(fd, "%02x ", c & 0xFF); fputs("\n", fd);
-	for (const byte c : ecbCip) fprintf(fd, "%02x ", c & 0xFF); fputs("\n", fd);
+	for (const byte c : cfbCip) { fprintf(fd, "%02x ", c & 0xFF); }  fputs("\n", fd);
+	for (const byte c : cb0Cip) { fprintf(fd, "%02x ", c & 0xFF); }  fputs("\n", fd);
+	for (const byte c : cb9Cip) { fprintf(fd, "%02x ", c & 0xFF); }  fputs("\n", fd);
+	for (const byte c : ecbCip) { fprintf(fd, "%02x ", c & 0xFF); }  fputs("\n", fd);
 
 	fclose(fd);
 
