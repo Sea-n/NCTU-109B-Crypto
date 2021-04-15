@@ -64,32 +64,24 @@ int main() {
 				StreamTransformationFilter cbcStfD(cbcDec, new StringSink(cbcRec), padding);
 				StreamTransformationFilter ecbStfD(ecbDec, new StringSink(ecbRec), padding);
 
-				try {
-					cf2StfD.Put(reinterpret_cast<const unsigned char*>(cipher), 64);
-					cf4StfD.Put(reinterpret_cast<const unsigned char*>(cipher), 64);
-					cbcStfD.Put(reinterpret_cast<const unsigned char*>(cipher), 64);
-					ecbStfD.Put(reinterpret_cast<const unsigned char*>(cipher), 64);
-				} catch (...) {
-					cout << "Exp.\n";
-				}
+				cf2StfD.Put(reinterpret_cast<const unsigned char*>(cipher), 32);
+				cf4StfD.Put(reinterpret_cast<const unsigned char*>(cipher), 32);
+				cbcStfD.Put(reinterpret_cast<const unsigned char*>(cipher), 32);
+				ecbStfD.Put(reinterpret_cast<const unsigned char*>(cipher), 32);
 
-				try {
-				cf2StfD.MessageEnd();
-				cf4StfD.MessageEnd();
-				cbcStfD.MessageEnd();
-				ecbStfD.MessageEnd();
-				} catch (...) {
-					cout << "Exp 2.\n";
-				}
+				try { cf2StfD.MessageEnd(); } catch (...) {}
+				try { cf4StfD.MessageEnd(); } catch (...) {}
+				try { cbcStfD.MessageEnd(); } catch (...) {}
+				try { ecbStfD.MessageEnd(); } catch (...) {}
 
 				/* Check if it matches original plaintext manually */
 				if (padding == StreamTransformationFilter::ZEROS_PADDING) {
-					cout << "Decrypted Text (CFB Mode): " << cf2Rec << '\n';
-					cout << "Decrypted Text (CFB Mode): " << cf4Rec << '\n';
+					cout << "Decrypted Text (CFB Mode): '" << cf2Rec << "'\n";
+					cout << "Decrypted Text (CFB Mode): '" << cf4Rec << "'\n";
 				}
-				cout << "Decrypted Text (CBC Mode): " << cbcRec << '\n';
+				cout << "Decrypted Text (CBC Mode): '" << cbcRec << "'\n";
 				if (iv == ivs[0]) {
-					cout << "Decrypted Text (ECB Mode): " << ecbRec << '\n';
+					cout << "Decrypted Text (ECB Mode): '" << ecbRec << "'\n";
 				}
 
 				puts("");

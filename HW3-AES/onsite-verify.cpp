@@ -49,18 +49,18 @@ int main() {
 	cbcStfE.MessageEnd();
 	cfbStfE.MessageEnd();
 
-	for (const byte c : ecbCip) { printf("%02x ", c & 0xFF); }  puts("\n");
-	for (const byte c : cbcCip) { printf("%02x ", c & 0xFF); }  puts("\n");
-	for (const byte c : cfbCip) { printf("%02x ", c & 0xFF); }  puts("\n");
+	for (const byte c : ecbCip) { printf("%02x ", c & 0xFF); }  puts("");
+	for (const byte c : cbcCip) { printf("%02x ", c & 0xFF); }  puts("");
+	for (const byte c : cfbCip) { printf("%02x ", c & 0xFF); }  puts("");
 
 	/* Decryption */
 	ECB_Mode<AES>::Decryption ecbDec(key, 16);
 	CBC_Mode<AES>::Decryption cbcDec(key, 16, iv0);
 	CFB_Mode<AES>::Decryption cfbDec; cfbDec.SetKey(key, 16, cfbP);
 
-	StreamTransformationFilter ecbStfD(ecbDec, new StringSink(ecbRec), StreamTransformationFilter::PKCS_PADDING);
-	StreamTransformationFilter cbcStfD(cbcDec, new StringSink(cbcRec), StreamTransformationFilter::ZEROS_PADDING);
-	StreamTransformationFilter cfbStfD(cfbDec, new StringSink(cfbRec), StreamTransformationFilter::NO_PADDING);
+	StreamTransformationFilter ecbStfD(ecbDec, new StringSink(ecbRec), StreamTransformationFilter::ZEROS_PADDING);
+	StreamTransformationFilter cbcStfD(cbcDec, new StringSink(cbcRec), StreamTransformationFilter::PKCS_PADDING);
+	StreamTransformationFilter cfbStfD(cfbDec, new StringSink(cfbRec), StreamTransformationFilter::ZEROS_PADDING);
 
 	ecbStfD.Put(reinterpret_cast<const unsigned char*>(ecbCip.c_str()), ecbCip.length());
 	cbcStfD.Put(reinterpret_cast<const unsigned char*>(cbcCip.c_str()), cbcCip.length());
