@@ -3,10 +3,11 @@ compile:
 
 onsite:
 	g++ --std=c++14 -Wall -Wextra -lcryptopp -o onsite onsite.cpp
+	g++ --std=c++14 -Wall -Wextra -lcryptopp -o onsite-verify onsite-verify.cpp
 
 clean:
 	-rm AES
-	-rm onsite
+	-rm onsite onsite-verify
 
 run:
 	./AES
