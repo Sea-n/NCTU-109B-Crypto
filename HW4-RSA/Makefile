@@ -1,5 +1,5 @@
 compile:
-	g++ --std=c++14 -Wall -Wextra -lcryptopp -o RSA rsa.cpp
+	g++ --std=c++14 -Wall -Wextra -Wconversion -lcryptopp -o RSA rsa.cpp
 
 clean:
 	-rm RSA

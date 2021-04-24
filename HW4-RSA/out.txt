@@ -1,0 +1,4 @@
+Ciphertext 1 = 4fd46914533f2735ca7e692f1d3ae5b0h
+Ciphertext 2 = 295de4ebe864de606d7e9c3de4bde243c3f7cb3447bca511dd665103e3949912h
+Message = ECC has shorter keys.
+Public key = 0x11
