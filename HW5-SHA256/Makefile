@@ -9,7 +9,7 @@ clean:
 
 run:
 	./sha256
-	./hashchain
+	time ./hashchain
 	cat out.txt
 
 pack:
