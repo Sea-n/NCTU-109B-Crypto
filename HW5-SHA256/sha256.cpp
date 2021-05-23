@@ -33,7 +33,7 @@ int main() {
 	StringSource ss((const byte*) digest.c_str(), digest.size(), true,
 			new HexEncoder(new StringSink(digestHex)));
 
-	out << "Problem 1: " << digestHex << "\n\n";
+	out << "Problem 1:\n" << digestHex << "\n\n";
 
 	return 0;
 }
